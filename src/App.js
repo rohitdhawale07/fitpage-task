@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import ObjectList from "./components/ObjectList";
+import ObjectDetails from "./components/ObjectDetails";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import fetchData from "./components/api";
 
-function App() {
+const App = () => {
+  const [objects, setObjects] = useState([]);
+
+  useEffect(() => {
+    const fetchDataFromApi = async () => {
+      const data = await fetchData();
+      setObjects(data);
+    };
+    fetchDataFromApi();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<ObjectList object={objects} />} />
+            <Route
+              path="/object/:id"
+              element={<ObjectDetails object={objects} />}
+            />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -74,5 +74,10 @@ p {
 
 .object-details-body p {
   text-decoration: none;
-  margin-top: 10px;
+  margin: 8px 0px;
+}
+
+.criteria-list-container {
+  /* border: 1px red solid; */
+  color: white;
 }

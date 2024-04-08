@@ -1,7 +1,7 @@
 // api.js
 
 // Define the URL of your API endpoint
-const API_URL = "http://localhost:5001/api/data";
+const API_URL = "https://mocki.io/v1/086d86aa-6c22-4e43-a00d-7e388ba0a54a";
 
 // Function to fetch data from the API
 const fetchData = async () => {
